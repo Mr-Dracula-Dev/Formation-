@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👑 Arslan MD 👑</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===============================
+   ORIGINAL STRUCTURE - UPGRADED VISUALS
+   =============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rgb-speed: 16s;
+    --glass-bg: rgba(0, 0, 0, 0.85);
+    --border-glow: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    padding: 20px;
+    background-image: 
+        radial-gradient(ellipse at 20% 50%, rgba(120, 80, 255, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(255, 80, 120, 0.05) 0%, transparent 60%);
+}
+
+/* Card */
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: all 0.3s;
+}
+
+/* Rainbow Text Animation */
+@keyframes rgbText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+
+.rgb-text {
+    background: linear-gradient(90deg, 
+        #ff4d6d, #ff8a4d, #ffd93d, #6bcb77, #4d96ff, #9b59ff, #ff4d6d
+    );
+    background-size: 400% 100%;
+    animation: rgbText var(--rgb-speed) linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Titles */
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 2px;
+}
+
+h1:last-of-type {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+/* Status */
+.status {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin: 6px 0 16px 0;
+    font-weight: 500;
+}
+
+/* ===== INPUT & BUTTON ===== */
+/* EXACT SAME STRUCTURE AS ORIGINAL */
+.input-wrap {
+    background: transparent;
+    border-radius: 16px;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+input {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    outline: none;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    text-align: center;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+input:focus {
+    border-color: rgba(255, 100, 200, 0.4);
+    box-shadow: 0 0 30px rgba(155, 89, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+input::placeholder {
+    color: #555;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255, 77, 109, 0.15), rgba(155, 89, 255, 0.15));
+    color: #fff;
+    transition: all 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background: linear-gradient(135deg, rgba(255, 77, 109, 0.25), rgba(155, 89, 255, 0.25));
+    border-color: rgba(255, 100, 200, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(155, 89, 255, 0.15);
+}
+
+button:active {
+    transform: translateY(0px);
+}
+
+/* ===== RESULT BOX ===== */
+#result {
+    margin-top: 20px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.code-display {
+    padding: 14px 24px;
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.08);
+    letter-spacing: 6px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.code-display:hover {
+    border-color: rgba(155, 89, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Loader */
+.loader {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid #9b59ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Footer */
+footer {
+    margin-top: 22px;
+    font-size: 0.7rem;
+    color: #444;
+    letter-spacing: 0.5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 18px;
+}
+
+/* ===== RGB BORDER (FOR INPUT & BUTTON) ===== */
+@keyframes rgbMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* Input Box with RGB Border */
+.rgb-box {
+    padding: 3px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #ff4d6d, #ff8a4d, #ffd93d, #6bcb77, #4d96ff, #9b59ff, #ff4d6d);
+    background-size: 300% 100%;
+    animation: rgbMove 4s linear infinite;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 16px auto;
+    transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(155, 89, 255, 0.05);
+}
+
+.rgb-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 16px;
+    border-radius: 16px;
+    background: #0a0a0f;
+    color: #fff;
+    text-align: center;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.rgb-box input::placeholder {
+    color: #555;
+}
+
+/* Button with RGB Border */
+.rgb-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 3px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #ff4d6d, #ff8a4d, #ffd93d, #6bcb77, #4d96ff, #9b59ff, #ff4d6d);
+    background-size: 300% 100%;
+    animation: rgbMove 4s linear infinite;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s;
+}
+
+.btn-inner {
+    background: #0a0a0f;
+    color: #fff;
+    display: block;
+    padding: 14px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.rgb-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 40px rgba(155, 89, 255, 0.2);
+}
+
+.rgb-btn:hover .btn-inner {
+    background: #111118;
+}
+
+/* Result Box with RGB Border */
+.result-box {
+    width: 100%;
+    max-width: 340px;
+    margin: 16px auto 0;
+    padding: 3px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #ff4d6d, #ff8a4d, #ffd93d, #6bcb77, #4d96ff, #9b59ff, #ff4d6d);
+    background-size: 300% 100%;
+    animation: rgbMove 5s linear infinite;
+    display: none;
+    box-shadow: 0 0 40px rgba(155, 89, 255, 0.05);
+}
+
+.result-inner {
+    background: #0a0a0f;
+    border-radius: 16px;
+    padding: 16px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+#codeBox {
+    letter-spacing: 4px;
+    color: #fff;
+    cursor: default;
+}
+
+/* Small decorative elements */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 4px 0 10px 0;
+    opacity: 0.3;
+}
+
+.divider span {
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.badge {
+    padding: 4px 14px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-weight: 500;
+}
+
+@media (max-width: 480px) {
+    .card { padding: 24px 16px; }
+    h1 { font-size: 1.7rem; }
+    h1:last-of-type { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<h1 class="rgb-text">👑 Arslan MD 👑</h1>
+<h1 class="rgb-text">PAIR CODE</h1>
+
+<p class="status rgb-text">TYPE YOUR WHATSAPP NUMBER</p>
+
+<!-- Input with RGB Border -->
+<div class="rgb-box">
+    <input type="text" id="number" placeholder="923237045919">
+</div>
+
+<!-- Button with RGB Border -->
+<button class="rgb-btn" onclick="getCode()">
+    <span class="btn-inner">GET PAIR CODE</span>
+</button>
+
+<!-- Result Box with RGB Border -->
+<div class="result-box" id="borderBox">
+    <div class="result-inner" id="codeBox">----</div>
+</div>
+
+<!-- Footer Badges -->
+<div class="badge-group">
+    <span class="badge">🤖 WHATSAPP BOT</span>
+    <span class="badge">⚡ ARSLAN-MD</span>
+    <span class="badge">✨ 2026</span>
+</div>
+
+<p class="status rgb-text" style="margin-top: 10px; font-size: 0.6rem;">MADE BY ARSLAN-MD · MINI BOT EDITION</p>
+
+</div>
+
+<script>
+// ===== EXACT ORIGINAL FUNCTIONALITY - NO CHANGES =====
+async function getCode() {
+    const num = document.getElementById("number").value.replace(/[^0-9]/g, '');
+    const codeBox = document.getElementById("codeBox");
+    const borderBox = document.getElementById("borderBox");
+
+    // Agar number khali hai
+    if (!num) {
+        borderBox.style.display = "block";
+        codeBox.style.letterSpacing = "normal";
+        codeBox.style.color = "#ff4d6d";
+        codeBox.innerText = "APNA WHATSAPP NUMBER LIKHE";
+        return;
+    }
+
+    // Loading State
+    borderBox.style.display = "block";
+    codeBox.style.letterSpacing = "normal";
+    codeBox.style.color = "#9b59ff";
+    codeBox.innerText = "CONNECTING.....";
+
+    try {
+        const res = await fetch(`/code?number=${num}`);
+        const data = await res.json();
+        
+        if (data.code) {
+            codeBox.style.letterSpacing = "4px";
+            codeBox.style.color = "#fff";
+            codeBox.innerText = data.code;
+        } else {
+            codeBox.style.color = "#ff4d6d";
+            codeBox.innerText = "SERVER FULL";
+        }
+    } catch (e) {
+        codeBox.style.color = "#ff4d6d";
+        codeBox.innerText = "SERVER IS FULL";
+    }
+}
+
+// Enter key support
+document.getElementById("number").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        getCode();
+    }
+});
+</script>
+
+</body>
+</html>
