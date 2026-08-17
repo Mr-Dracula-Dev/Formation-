@@ -1,0 +1,16 @@
+{
+  "BOT_NAME": "Dracula Test",
+  "DEV_NAME": "Mr Dracula Dev",
+  "DEV_NUMBERS": [
+    "+224666649030",
+    "+50956461555"
+  ],
+  "CHANNEL_LINK": "https://whatsapp.com/channel/0029VarfjW04tRrmwfb8x306",
+  "NEWSLETTER_JID": "120363348739987203@newsletter",
+  "NEWSLETTER_NAME": "Arslan-MD Mini V²",
+  "GROUP_INVITE_LINK": "https://chat.whatsapp.com/Jpf5TU6nrwlFcQnW86bR7f",
+  "PREFIX": ".",
+  "BOT_PP": "https://files.catbox.moe/prkkzj.png",
+  "GITHUB_REPO_TYPE": "Bot WhatsApp basé sur Baileys (type MD bot) avec système de plugins, pairing, MongoDB",
+  "GITHUB_REPO_NAME": "ArslanMD-Mini-Bot"
+}
